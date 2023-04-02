@@ -14,8 +14,6 @@ def decode_instruction(instruction):
         21: SUB,
         30: PUSH,
         31: POP,
-        40: JP,
-
         
     }
     
@@ -43,7 +41,7 @@ def SUB(src, dst):
     REGISTERS[decode_register(dst)] = REGISTERS[decode_register(dst)] - REGISTERS[decode_register(src)]
     
 def PUSH(src):
-    STACK.push(REGISTERS[decode_register(src)])
+    STACK.append(REGISTERS[decode_register(src)])
     
 def POP(dst):
     REGISTERS[decode_register(dst)] = STACK.pop()
