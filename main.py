@@ -1,14 +1,15 @@
-def main():
-    registers = {
-        "R0": 0,
-        "R1": 0,
-        "R2": 0,
-        "R3": 0
+REGISTERS = {
+    "R0": 0,
+    "R1": 0,
+    "R2": 0,
+    "R3": 0
+}
+STACK = []
+
+def decode_instruction(instruction):
+    table = {
+        10: MOVR,
     }
-    
-    stack = []
-    
-    
     
 def decode_register(encoded):
     table = {
@@ -21,6 +22,10 @@ def decode_register(encoded):
     return table[encoded]
 
 
+def MOVR(src, dst):
+    REGISTERS[decode_register(dst)] = REGISTERS[decode_register(src)]    
+    REGISTERS[decode_register(src)] = 0
 
-if __name__ == "__main__":
-    main()
+
+#if __name__ == "__main__":
+#    main()
