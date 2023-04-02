@@ -9,6 +9,14 @@ STACK = []
 def decode_instruction(instruction):
     table = {
         10: MOVR,
+        11: MOVV, 
+        20: ADD,
+        21: SUB,
+        30: PUSH,
+        31: POP,
+        40: JP,
+
+        
     }
     
 def decode_register(encoded):
@@ -26,7 +34,19 @@ def MOVR(src, dst):
     REGISTERS[decode_register(dst)] = REGISTERS[decode_register(src)]    
     
 def MOVV(dst, val):
+    REGISTERS[decode_register(dst)] = val
     
+def ADD(src, dst):
+    REGISTERS[decode_register(dst)] = REGISTERS[decode_register(dst)] + REGISTERS[decode_register(src)]
+    
+def SUB(src, dst):
+    REGISTERS[decode_register(dst)] = REGISTERS[decode_register(dst)] - REGISTERS[decode_register(src)]
+    
+def PUSH(src):
+    STACK.push(REGISTERS[decode_register(src)])
+    
+def POP(dst):
+    REGISTERS[decode_register(dst)] = STACK.pop()
 
 
 #if __name__ == "__main__":
