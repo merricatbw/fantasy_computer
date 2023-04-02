@@ -24,7 +24,9 @@ def decode_register(encoded):
 
 def MOVR(src, dst):
     REGISTERS[decode_register(dst)] = REGISTERS[decode_register(src)]    
-    REGISTERS[decode_register(src)] = 0
+    
+def MOVV(dst, val):
+    
 
 
 #if __name__ == "__main__":
