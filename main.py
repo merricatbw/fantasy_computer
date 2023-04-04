@@ -5,6 +5,7 @@ REGISTERS = {
     "R3": 0
 }
 STACK = []
+IP = 0
 
 def decode_instruction(instruction):
     table = {
@@ -14,7 +15,8 @@ def decode_instruction(instruction):
         21: SUB,
         30: PUSH,
         31: POP,
-        
+        40: JP,
+        41: JL, 
     }
     
 def decode_register(encoded):
@@ -45,6 +47,13 @@ def PUSH(src):
     
 def POP(dst):
     REGISTERS[decode_register(dst)] = STACK.pop()
+
+def JP(addr):
+    IP = addr
+
+def JL(R1, R2, addr):
+    if REGISTERS[decode_register(R1)] < REGISTERS[decode_register(R2)]:
+        IP = addr
 
 
 #if __name__ == "__main__":
