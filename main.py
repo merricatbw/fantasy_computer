@@ -56,5 +56,5 @@ def JL(R1, R2, addr):
         IP = addr
 
 
-#if __name__ == "__main__":
-#    main()
+if __name__ == "__main__":
+    main()
